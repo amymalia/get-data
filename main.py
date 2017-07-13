@@ -20,6 +20,7 @@ ALLOWED_EXTENSIONS = set(['txt', 'kml'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.debug = True
 
 # checks file is in allowed file list
 def allowed_file(filename):
