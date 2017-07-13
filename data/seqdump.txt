@@ -1,0 +1,3 @@
+>Q8SQ46.1 RecName: Full=CD59 glycoprotein; AltName: Full=MAC-inhibitory protein; Short=MAC-IP; AltName: Full=Membrane attack complex inhibition factor; Short=MACIF; AltName: Full=Protectin; AltName: CD_antigen=CD59; Flags: Precursor
+MGIQGGSVLFGLLLVLAVFCHSGHSLQCYNCPNPTTDCKTAINCSSGFDTCLIARAGLQVYNQCWKFANCNYNDISTLLK
+ESELRYFCCKKDLCNFNEQLESGGTSLSEKTVVLLVTPLLAAAWCLHP
