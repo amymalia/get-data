@@ -52,57 +52,40 @@ def create_file(self):
             flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            #file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            write_retry_params = gcs.RetryParams(backoff_factor=1.1)
-            gcs_file = gcs.open(filename,
-                                'w',
-                                content_type='text/plain',
-                                options={'x-goog-meta-foo': 'foo',
-                                        'x-goog-meta-bar': 'bar'},
-                                retry_params=write_retry_params)
-            gcs_file.write('abcde\n')
-            gcs_file.write('f'*1024*4 + '\n')
-            gcs_file.close()
-            self.tmp_filenames_to_clean_up.append(filename)
-            return jsonify({'result':'ok'})
+            bucket_name = os.environ.get('BUCKET_NAME',
+                                         app_identity.get_default_gcs_bucket_name())
+            bucket = '/' + bucket_name
+            filename = bucket + '/hot-catz'
+            self.tmp_filenames_to_clean_up = []
+            try:
+                #filename = secure_filename(file.filename)
+                # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                write_retry_params = gcs.RetryParams(backoff_factor=1.1)
+                gcs_file = gcs.open(filename,
+                                    'w',
+                                    content_type='text/plain',
+                                    options={'x-goog-meta-foo': 'foo',
+                                             'x-goog-meta-bar': 'bar'},
+                                    retry_params=write_retry_params)
+                gcs_file.write('abcde\n')
+                gcs_file.write('f' * 1024 * 4 + '\n')
+                gcs_file.close()
+                self.tmp_filenames_to_clean_up.append(filename)
+                return jsonify({'result': 'ok'})
+
+            except Exception, e:
+                logging.exception(e)
+                self.delete_files()
+                self.response.write('\n\nThere was an error running the demo! '
+                                    'Please check the logs for more details.\n')
+
+            else:
+                self.delete_files()
+                self.response.write('\n\nThe demo ran successfully!\n')
+
             # return redirect(url_for('uploaded_file',
             #                         filename=filename))
     else:
-        bucket_name = os.environ.get('BUCKET_NAME',
-                                     app_identity.get_default_gcs_bucket_name())
-        bucket = '/' + bucket_name
-        filename = bucket + '/hot-catz'
-        self.tmp_filenames_to_clean_up = []
-        try:
-            self.create_file(filename)
-            self.response.write('\n\n')
-
-            # self.read_file(filename)
-            # self.response.write('\n\n')
-            #
-            # self.stat_file(filename)
-            # self.response.write('\n\n')
-            #
-            # self.create_files_for_list_bucket(bucket)
-            # self.response.write('\n\n')
-            #
-            # self.list_bucket(bucket)
-            # self.response.write('\n\n')
-            #
-            # self.list_bucket_directory_mode(bucket)
-            # self.response.write('\n\n')
-
-        except Exception, e:
-            logging.exception(e)
-            self.delete_files()
-            self.response.write('\n\nThere was an error running the demo! '
-                                'Please check the logs for more details.\n')
-
-        else:
-            self.delete_files()
-            self.response.write('\n\nThe demo ran successfully!\n')
-
         return '''
         <!doctype html>
         <title>HOTMAP</title>
