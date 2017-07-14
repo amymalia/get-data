@@ -45,13 +45,13 @@ def create_file():
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
-            return redirect(request.url)
+            return jsonify({'result': 'no file part'})
         file = request.files['file']
         # if user does not select file, browser also
         # submit a empty part without filename
         if file.filename == '':
             flash('No selected file')
-            return redirect(request.url)
+            return jsonify({'result': 'no selected file'})
         if file and allowed_file(file.filename):
             bucket_name = os.environ.get('BUCKET_NAME',
                                          app_identity.get_default_gcs_bucket_name())
@@ -77,6 +77,7 @@ def create_file():
 
             except Exception, e:
                 logging.exception(e)
+                return jsonify({'result': 'not too good'})
                 #self.delete_files()
                 #self.response.write('\n\nThere was an error running the demo! '
                                     #'Please check the logs for more details.\n')
