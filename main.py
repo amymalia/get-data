@@ -28,18 +28,18 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 #[START delete_files]
-def delete_files(self):
-    self.response.write('Deleting files...\n')
-    for filename in self.tmp_filenames_to_clean_up:
-      self.response.write('Deleting file %s\n' % filename)
-      try:
-        gcs.delete(filename)
-      except gcs.NotFoundError:
-        pass
+# def delete_files(self):
+#     self.response.write('Deleting files...\n')
+#     for filename in self.tmp_filenames_to_clean_up:
+#       self.response.write('Deleting file %s\n' % filename)
+#       try:
+#         gcs.delete(filename)
+#       except gcs.NotFoundError:
+#         pass
 #[END delete_files]
 
 @app.route('/', methods=['GET', 'POST'])
-def create_file(self):
+def create_file():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -56,7 +56,7 @@ def create_file(self):
                                          app_identity.get_default_gcs_bucket_name())
             bucket = '/' + bucket_name
             filename = bucket + '/hot-catz'
-            self.tmp_filenames_to_clean_up = []
+            #self.tmp_filenames_to_clean_up = []
             try:
                 #filename = secure_filename(file.filename)
                 # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -70,18 +70,18 @@ def create_file(self):
                 gcs_file.write('abcde\n')
                 gcs_file.write('f' * 1024 * 4 + '\n')
                 gcs_file.close()
-                self.tmp_filenames_to_clean_up.append(filename)
+                #self.tmp_filenames_to_clean_up.append(filename)
                 return jsonify({'result': 'ok'})
 
             except Exception, e:
                 logging.exception(e)
-                self.delete_files()
-                self.response.write('\n\nThere was an error running the demo! '
-                                    'Please check the logs for more details.\n')
+                #self.delete_files()
+                #self.response.write('\n\nThere was an error running the demo! '
+                                    #'Please check the logs for more details.\n')
 
-            else:
-                self.delete_files()
-                self.response.write('\n\nThe demo ran successfully!\n')
+            #else:
+                #self.delete_files()
+                #self.response.write('\n\nThe demo ran successfully!\n')
 
             # return redirect(url_for('uploaded_file',
             #                         filename=filename))
