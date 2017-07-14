@@ -53,8 +53,10 @@ def create_file():
             flash('No selected file')
             return jsonify({'result': 'no selected file'})
         if file and allowed_file(file.filename):
+            # bucket_name = os.environ.get('BUCKET_NAME',
+            #                              app_identity.get_default_gcs_bucket_name())
             bucket_name = os.environ.get('BUCKET_NAME',
-                                         app_identity.get_default_gcs_bucket_name())
+                                         'test-push-172208.appspot.com')
             bucket = '/' + bucket_name
             filename = secure_filename(file.filename)
             filePath = bucket + '/' + filename
