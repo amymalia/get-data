@@ -57,16 +57,16 @@ def upload_file():
             # return redirect(url_for('uploaded_file',
             #                         filename=filename))
     else
-    return '''
-    <!doctype html>
-    <title>HOTMAP</title>
-    <h1>Awesome File Uploader!</h1>
-    <h2>what have you got?</h2>
-    <form action="" method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
+        return '''
+        <!doctype html>
+        <title>HOTMAP</title>
+        <h1>Awesome File Uploader!</h1>
+        <h2>what have you got?</h2>
+        <form action="" method=post enctype=multipart/form-data>
+          <p><input type=file name=file>
          <input type=submit value=Upload>
-    </form>
-    '''
+        </form>
+        '''
 
 # @app.route('/uploads/<filename>')
 # def uploaded_file(filename):
