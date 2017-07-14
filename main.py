@@ -56,20 +56,21 @@ def create_file():
             bucket_name = os.environ.get('BUCKET_NAME',
                                          app_identity.get_default_gcs_bucket_name())
             bucket = '/' + bucket_name
-            filename = bucket + '/hot-catz'
+            filename = secure_filename(file.filename)
+            filePath = bucket + '/' + filename
             #self.tmp_filenames_to_clean_up = []
             try:
                 #filename = secure_filename(file.filename)
                 # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 write_retry_params = gcs.RetryParams(backoff_factor=1.1)
-                gcs_file = gcs.open(filename,
+                gcs_file = gcs.open(filePath,
                                     'w',
                                     content_type='text/plain',
                                     options={'x-goog-meta-foo': 'foo',
                                              'x-goog-meta-bar': 'bar'},
                                     retry_params=write_retry_params)
-                gcs_file.write('abcde\n')
-                gcs_file.write('f' * 1024 * 4 + '\n')
+                gcs_file.write(file.read())
+                #gcs_file.write('f' * 1024 * 4 + '\n')
                 gcs_file.close()
                 #self.tmp_filenames_to_clean_up.append(filename)
                 return jsonify({'result': 'ok'})
