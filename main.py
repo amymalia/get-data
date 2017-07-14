@@ -56,7 +56,7 @@ def upload_file():
             return jsonify({'result':'ok'})
             # return redirect(url_for('uploaded_file',
             #                         filename=filename))
-    else
+    else:
         return '''
         <!doctype html>
         <title>HOTMAP</title>
