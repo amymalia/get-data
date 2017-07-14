@@ -102,6 +102,7 @@ def create_file(self):
         else:
             self.delete_files()
             self.response.write('\n\nThe demo ran successfully!\n')
+
         return '''
         <!doctype html>
         <title>HOTMAP</title>
