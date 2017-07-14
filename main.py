@@ -14,6 +14,7 @@ import sys
 #sys.path.append('/home/sam/gcloud/python-docs-samples/appengine/standard/storage/appengine-client/lib/')
 
 import cloudstorage as gcs
+from google.appengine.api import app_identity
 
 UPLOAD_FOLDER = '/home/amytakayesu/get-data/'
 ALLOWED_EXTENSIONS = set(['txt', 'kml'])
