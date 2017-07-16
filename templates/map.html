@@ -1,4 +1,8 @@
 <!doctype html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/map.css') }}">
+</head>
+<body>
 <script type=text/javascript src="{{ url_for('static', filename='js/map.js') }}"></script>
 <title>HOTMAP</title>
 <h1>Awesome File Uploader!</h1>
@@ -8,6 +12,8 @@
         <input type=submit value=Upload>
     <div id="map"></div>
     <div id="capture"></div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8aZ0bgxCZGVKhGQ5VCxd-BctfCdlFXm8&callback=initMap">
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8aZ0bgxCZGVKhGQ5VCxd-BctfCdlFXm8&callback=initMap">
     </script>
 </form>
+</body>
