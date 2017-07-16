@@ -94,7 +94,7 @@ def create_file():
             #                         filename=filename))
     else:
         googlePath = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml'
-        return render_template('map.html')
+        return render_template('map.html', googlePath = googlePath)
 
 # @app.route('/uploads/<filename>')
 # def uploaded_file(filename):
