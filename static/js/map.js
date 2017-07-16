@@ -1,5 +1,5 @@
 var map;
-var src = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml';
+var src = {{googlePath}};
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {

@@ -60,6 +60,8 @@ def create_file():
             bucket = '/' + bucket_name
             filename = secure_filename(file.filename)
             filePath = bucket + '/' + filename
+            #googlePath = 'https://storage.googleapis.com/' + filePath
+            googlePath = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml'
             #self.tmp_filenames_to_clean_up = []
             try:
                 #filename = secure_filename(file.filename)
