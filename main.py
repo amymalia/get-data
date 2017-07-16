@@ -77,7 +77,7 @@ def create_file():
                 #gcs_file.write('f' * 1024 * 4 + '\n')
                 gcs_file.close()
                 #self.tmp_filenames_to_clean_up.append(filename)
-                return jsonify({'result': 'ok'})
+                return render_template('map.html')
 
             except Exception, e:
                 logging.exception(e)
