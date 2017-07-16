@@ -6,6 +6,11 @@
 </head>
 <body>
 <script type=text/javascript src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script>  var kmlLayer = new google.maps.KmlLayer(src, {
+    suppressInfoWindows: true,
+    preserveViewport: false,
+    map: map
+  });</script>
 <title>HOTMAP</title>
 <h1>Awesome File Uploader!</h1>
 <h2>what have you got? hi {{ googlePath }}</h2>
