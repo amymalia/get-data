@@ -7,7 +7,7 @@ function initMap() {
     zoom: 2,
     mapTypeId: 'terrain'
   });
-
+  console.log('hello');
   var kmlLayer = new google.maps.KmlLayer(src, {
     suppressInfoWindows: true,
     preserveViewport: false,
