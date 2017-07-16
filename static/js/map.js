@@ -1,6 +1,8 @@
 var map;
 var src = {{googlePath}};
 
+console.log(src);
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: new google.maps.LatLng(-19.257753, 146.823688),
