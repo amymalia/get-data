@@ -93,6 +93,7 @@ def create_file():
             # return redirect(url_for('uploaded_file',
             #                         filename=filename))
     else:
+        googlePath = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml'
         return render_template('map.html')
 
 # @app.route('/uploads/<filename>')
