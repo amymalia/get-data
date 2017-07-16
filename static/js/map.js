@@ -1,5 +1,5 @@
 var map;
-var src = 'https://storage.googleapis.com/test-push-172208.appspot.com/KML_Samples.kml';
+var src = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml';
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
