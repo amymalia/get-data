@@ -6,7 +6,7 @@ Thrilling location to send RESTful pushes
 
 
 import os
-from flask import Flask, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
 
@@ -91,16 +91,7 @@ def create_file():
             # return redirect(url_for('uploaded_file',
             #                         filename=filename))
     else:
-        return '''
-        <!doctype html>
-        <title>HOTMAP</title>
-        <h1>Awesome File Uploader!</h1>
-        <h2>what have you got?</h2>
-        <form action="" method=post enctype=multipart/form-data>
-        <p><input type=file name=file>
-        <input type=submit value=Upload>
-        </form>
-        '''
+        return render_template('map.html')
 
 # @app.route('/uploads/<filename>')
 # def uploaded_file(filename):
