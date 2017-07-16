@@ -10,7 +10,13 @@
     suppressInfoWindows: true,
     preserveViewport: false,
     map: map
-  });</script>
+  });
+  kmlLayer.addListener('click', function(event) {
+    var content = event.featureData.infoWindowHtml;
+    var testimonial = document.getElementById('capture');
+    testimonial.innerHTML = content;
+  });
+</script>
 <title>HOTMAP</title>
 <h1>Awesome File Uploader!</h1>
 <h2>what have you got? hi {{ googlePath }}</h2>
