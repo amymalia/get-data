@@ -10,12 +10,3 @@ html, body {
  float: left;
  border: thin solid #333;
  }
-#capture {
- height: 360px;
- width: 480px;
- overflow: hidden;
- float: left;
- background-color: #ECECFB;
- border: thin solid #333;
- border-left: none;
- }
