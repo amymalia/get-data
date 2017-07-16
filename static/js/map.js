@@ -1,5 +1,4 @@
 var map;
-var src = {{googlePath}};
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
