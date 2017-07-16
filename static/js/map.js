@@ -1,7 +1,7 @@
 var map;
 var src = {{googlePath}};
 
-console.log(src);
+console.log("hello: " + src);
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
