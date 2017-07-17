@@ -62,4 +62,4 @@ def display_file():
     if request.method == 'POST':
         return render_template('map.html')
     else:
-        return render_template('map.html')
+        return render_template('picker.html')
