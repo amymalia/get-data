@@ -57,6 +57,9 @@ def create_file():
             logging.exception(e)
             return jsonify({'result': 'not too good'})
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['POST','GET'])
 def display_file():
+    if request.method == 'POST':
+        return render_template('map.html')
+    else:
         return render_template('map.html')
