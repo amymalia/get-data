@@ -62,4 +62,8 @@ def display_file():
     if request.method == 'POST':
         return render_template('map.html')
     else:
-        return render_template('picker.html')
+        bucket_name = os.environ.get('BUCKET_NAME',
+                                     'test-push-172208.appspot.com')
+        bucket = '/' + bucket_name
+        files = gcs.listbucket(bucket, max_keys=20)
+        return render_template('picker.html', files=files)
