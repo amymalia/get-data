@@ -60,7 +60,7 @@ def create_file():
 @app.route('/', methods=['POST','GET'])
 def display_file():
     if request.method == 'POST':
-        return render_template('map.html')
+        return render_template('map.html', googlePath = request.form['map'])
     else:
         bucket_name = os.environ.get('BUCKET_NAME',
                                      'test-push-172208.appspot.com')
