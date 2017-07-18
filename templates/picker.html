@@ -12,7 +12,7 @@
 <form name="mapPicker" action="{{ url_for('display_file') }}" method="POST">
     <select name="map" class="ui search dropdown">
     {% for file in files %}
-  <option value=file>{{file.filename}}</option>
+  <option value={{file}}>{{file.filename}}</option>
     {% endfor %}
 </select>
     <button class="ui positive basic button" type="submit">Show me my map!</button>
