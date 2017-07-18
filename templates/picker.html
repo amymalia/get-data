@@ -9,7 +9,7 @@
 <title>HOTMAP</title>
 <h1>Awesome Map Viewer!</h1>
 <h2>File path: {{ googlePath }}</h2>
-<form name="mapPicker" action="{{ url_for('main.py') }}" method="POST">
+<form name="mapPicker" action="{{ url_for('display_file') }}" method="POST">
     <select name="map" class="ui search dropdown">
     {% for file in files %}
   <option value=file>{{file.filename}}</option>
